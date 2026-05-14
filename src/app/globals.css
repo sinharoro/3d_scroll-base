@@ -124,17 +124,17 @@ canvas {
 }
 
 .btn-primary {
-  padding: 18px 48px;
+  padding: 18px 56px;
   background: linear-gradient(135deg, #a855f7, #ec4899);
   border-radius: 50px;
   font-weight: 500;
-  font-size: 13px;
-  letter-spacing: 0.15em;
+  font-size: 12px;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: white;
   border: none;
   cursor: pointer;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
 }
@@ -155,30 +155,32 @@ canvas {
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 20px 40px rgba(168, 85, 247, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 25px 50px rgba(168, 85, 247, 0.4);
+  opacity: 0.95;
 }
 
-.btn-secondary {
-  padding: 18px 48px;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.btn-glass {
+  padding: 18px 56px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 50px;
   font-weight: 500;
-  font-size: 13px;
-  letter-spacing: 0.15em;
+  font-size: 12px;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: white;
   cursor: pointer;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .input-field {
@@ -211,4 +213,97 @@ canvas {
 .geometric-shape {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+}
+
+.bg-noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+.radial-gradient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(168, 85, 247, 0.08) 0%, transparent 60%);
+}
+
+.cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #a855f7;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  will-change: transform;
+}
+
+.cursor-ring {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(168, 85, 247, 0.6);
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
+  will-change: transform;
+}
+
+* {
+  cursor: none;
+}
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: #0f0a1a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+.loading-counter {
+  font-size: 6rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.loading-bar-track {
+  width: 200px;
+  height: 2px;
+  background: rgba(168, 85, 247, 0.2);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.loading-bar-fill {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #a855f7, #ec4899, #c084fc);
+  transform-origin: left;
+}
+
+.loading-logo {
+  position: absolute;
+  bottom: 3rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
 }
